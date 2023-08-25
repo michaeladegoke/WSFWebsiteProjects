@@ -20,12 +20,13 @@ if (isset($_POST['submit'])) {
                 move_uploaded_file($file_tmp, $target_dir);
                 //$message =  "<p style='color:green'> File uploaded </p>";
 
-                $title = htmlspecialchars($_POST['title']);
+                $titleone = htmlspecialchars($_POST['titleone']);
+                $titletwo = htmlspecialchars($_POST['titletwo']);
                 $body = htmlspecialchars($_POST['body']);
                 $image = $target_dir;
 
-                $sql = "INSERT INTO tb_home(title, body, image) 
-                VALUES('$title', '$body', '$image')";
+                $sql = "INSERT INTO tb_home(titleone, titletwo, body, image) 
+                VALUES('$titleone', '$titletwo', '$body', '$image')";
                 $result = mysqli_query($conn, $sql);
 
                 if ($result) {
@@ -78,8 +79,12 @@ if (isset($_POST['submit'])) {
             <?php echo $message ?? null; ?>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="mt-4 w-75" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter your title">
+                    <label for="title" class="form-label">Titleone</label>
+                    <input type="text" class="form-control" id="title" name="titleone" placeholder="Enter your title">
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Titletwo</label>
+                    <input type="text" class="form-control" id="title" name="titletwo" placeholder="Enter your title">
                 </div>
                 <div class="mb-3">
                     <label for="body" class="form-label">body</label>
